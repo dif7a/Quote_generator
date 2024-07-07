@@ -1,10 +1,11 @@
-const api_url = "https://api.quotable.io/random";
+const api_url = "https://type.fit/api/quotes";
 
 async function getQuote(url){
 const response = await fetch(url);
 var data = await response.json();
-document.querySelector('blockquote').innerHTML = data.content;
-document.querySelector('span').innerHTML = data.author
+const index = Math.floor(Math.random()*data.length);
+document.querySelector('blockquote').innerHTML = data[index].text;
+document.querySelector('span').innerHTML = data[index].author
 }
 getQuote(api_url);
     
